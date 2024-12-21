@@ -7,7 +7,7 @@ export const main = handler(async (event, context) => {
         TableName: process.env.tableName,
         Item: {
             // Theattributesoftheitemto be created
-            userId: "123", //Theidof the author
+            userId: event.requestContext.identity.cognitoIdentityId, //Theidof the author
             noteId: uuid.v1(), //Auniqueuuid
             attachment: data.attachment,//Parsedfromrequestbody
             createdAt: Date.now(), //Current Unixtimestamp

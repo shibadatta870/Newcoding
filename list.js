@@ -10,7 +10,7 @@ export const main = handler(async (event, context) => {
         //'ExpressionAttributeValues' defines thevalueinthecondition
         //-':userId':defines'userId'to be theidoftheauthor
         ExpressionAttributeValues: {
-            ":userId": "123",
+            ":userId": event.requestContext.identity.cognitoIdentityId,
         },
     };
     const result = await dynamoDb.query(params);
